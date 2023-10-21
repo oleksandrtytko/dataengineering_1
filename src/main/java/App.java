@@ -15,6 +15,8 @@ import java.util.stream.Stream;
 
 public class App {
 
+	private static final String FILE_NAME = "10K.github.json";
+
 	private static final String EVENT_FIELD = "type";
 	private static final String PUSH_EVENT = "PushEvent";
 	private static final String PAYLOAD_OBJECT_FIELD = "payload";
@@ -34,7 +36,7 @@ public class App {
 				.getOrCreate();
 
 		JavaRDD<Row> json = spark.read()
-				.json("10K.github.json")
+				.json(FILE_NAME)
 				.toJavaRDD();
 
 		StructType schema = DataTypes.createStructType(
